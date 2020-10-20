@@ -2,6 +2,11 @@ import discord
 from discord.ext import commands
 import random
 
+fname = 'token.txt' # txt location
+with open(fname, 'r') as f:
+	for line in f:
+		token = line
+
 client = commands.Bot(command_prefix = ">")
 
 @client.event
@@ -11,6 +16,8 @@ async def on_ready():
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+
+
 
 @client.command(aliases=['8ball', 'test'])
 async def _8ball(ctx, *, question): # the '*' allows function to take in multiple arguments as one argument
@@ -36,5 +43,5 @@ async def _8ball(ctx, *, question): # the '*' allows function to take in multipl
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 
-client.run('NzY3OTI4NDIzMTgzNDE3MzY0.X45DEw.HAqDV5_byvIBO2_zvNAWk_yPsQs') # Add token here
+client.run(token) # Add token here
 print("end")
