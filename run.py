@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import random
 
-client = discord.Bot(command_prefix = ">")
+client = commands.Bot(command_prefix = ">")
 
 @client.event
 async def on_ready():
@@ -36,5 +36,5 @@ async def _8ball(ctx, *, question): # the '*' allows function to take in multipl
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 
-#client.run('your token here') # Add token here
+client.run('NzY3OTI4NDIzMTgzNDE3MzY0.X45DEw.HAqDV5_byvIBO2_zvNAWk_yPsQs') # Add token here
 print("end")
