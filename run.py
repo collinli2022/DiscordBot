@@ -46,11 +46,12 @@ async def on_message(message):
         if daMessage in ['love']:
             if '<@!' in daContent and '>' in daContent:
                 user = daContent[daContent.index('!')+1:daContent.index('>')]
-                user = int(user)
-                user = await client.fetch_user(user)
+                #user = await client.fetch_user(int(user))
+                user = await helper.getUser(client, user)
                 await message.channel.send(message.author.mention + ' :heart: ' + user.mention)
             else:
-                user = await client.fetch_user(767928423183417364)
+                #user = await client.fetch_user(767928423183417364)
+                user = await helper.getUser(client, 767928423183417364)
                 await message.channel.send(message.author.mention + ' :heart: ' + user.mention)
     await client.process_commands(message)
 
