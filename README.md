@@ -13,3 +13,6 @@ A personal discord bot that is intergrated with Raspberry Pi
 dablitfam.json - custom commands for friends
 helper.py - helps main file (makes code neater)
 run.py - main file (run this to start bot)
+
+#### Stuff I learned
+- Why does on_message stop commands from working answered here: https://stackoverflow.com/questions/49331096/why-does-on-message-stop-commands-from-working

@@ -52,8 +52,7 @@ async def on_message(message):
             else:
                 user = await client.fetch_user(767928423183417364)
                 await message.channel.send(message.author.mention + ' :heart: ' + user.mention)
-
-
+    await client.process_commands(message)
 
 token = helper.getToken()
 client.run(token) # Add token here

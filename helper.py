@@ -5,6 +5,8 @@ import random
 import json
 
 # DISCORD HELP
+def getUser(client, ID): # converts string ID to a user which can be messaged or pinged
+    return client.fetch_user(int(ID))
 
 # PERSONAL HELP
 def getJson(location):
