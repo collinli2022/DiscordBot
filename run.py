@@ -1,50 +1,60 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands import MemberConverter
 import random
+import json 
+import helper # self-written helper module
 
-token = '' # 
+cc = helper.getJson('dablitfam.json') # commands that can be easily changed from json
+headers = helper.getHeaderAliases(cc)
 
-fname = 'token.txt' # txt location
-with open(fname, 'r') as f:
-	for line in f:
-		token = line
+command_prefix = '>'
+client = commands.Bot(command_prefix = command_prefix)
 
-client = commands.Bot(command_prefix = ">")
-
+## DEBUG FUNCTIONS
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    print('Token is: ', token)
+    await client.change_presence(activity=discord.Game("your mom ;)"))
+
+@client.event
+async def on_member_join(ctx, member):
+    await ctx.send(f'{member} is now part of our cult')
+
+@commands.command(aliases=['commandlist', 'commands'])
+async def _help(self, ctx):
+    await ctx.send_help()
 
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
 
+@client.event
+async def on_message(message):
+    if message.content[0] == command_prefix:
+        print(message.content)
+        daContent = ''
+        if ' ' in message.content:
+            daMessage = message.content[1:message.content.index(' ')] # grab the command
+            daContent = message.content[message.content.index(' '):] # grab the other stuff after command
+        else:
+            daMessage = message.content[1:]
+        if daMessage in headers:
+            await message.channel.send(helper.getResponse(daMessage, cc))
+        if daMessage in ['8ball', 'ask']:
+            await message.channel.send(helper._8ball(daContent))
+        if daMessage in ['love']:
+            if '<@!' in daContent and '>' in daContent:
+                user = daContent[daContent.index('!')+1:daContent.index('>')]
+                user = int(user)
+                user = await client.fetch_user(user)
+                await message.channel.send(message.author.mention + ' :heart: ' + user.mention)
+            else:
+                user = await client.fetch_user(767928423183417364)
+                await message.channel.send(message.author.mention + ' :heart: ' + user.mention)
 
 
-@client.command(aliases=['8ball', 'test'])
-async def _8ball(ctx, *, question): # the '*' allows function to take in multiple arguments as one argument
-    responses = ['It is certain',
-               'It is decidedly so',
-               'Without a doubt',
-               'Yes – definitely',
-               'You may rely on it',
-               'As I see it, yes',
-               'Most likely',
-               'Outlook good',
-               'Yes Signs point to yes',
-               'Reply hazy', 'try again',
-               'Ask again later',
-               'Better not tell you now',
-               'Cannot predict now',
-               'Concentrate and ask again',
-               'Dont count on it',
-               'My reply is no',
-               'My sources say no',
-               'Outlook not so good',
-               'Very doubtful']
-    await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-
+token = helper.getToken()
 client.run(token) # Add token here
 print("end")
