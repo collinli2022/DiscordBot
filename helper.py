@@ -8,6 +8,9 @@ import json
 def getUser(client, ID): # converts string ID to a user which can be messaged or pinged
     return client.fetch_user(int(ID))
 
+def changeStatus(client, number = random.randint()):
+    return null
+
 # PERSONAL HELP
 def getJson(location):
 	# Opening JSON file 
