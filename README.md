@@ -7,3 +7,6 @@ A personal discord bot that is intergrated with Raspberry Pi
 #### RPI setup
 ##### Auto-Shutdown
 1. https://www.recantha.co.uk/blog/?p=13999
+
+
+#### Explanation of files
