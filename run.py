@@ -55,10 +55,9 @@ async def ping(ctx):
 @commands.command(aliases=['commandlist', 'commands'])
 async def _help(self, ctx):
     await ctx.send_help()
-@client.command()
+@client.command(aliases=['status'])
 async def changeStatus(ctx, arg1, arg2):
 	await helper.changeStatus(client, arg1, arg2)
-	await ctx.send('Changed Status')
 
 token = helper.getToken()
 client.run(token) # Add token here
