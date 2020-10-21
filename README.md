@@ -16,3 +16,4 @@ run.py - main file (run this to start bot)
 
 #### Stuff I learned
 - Why does on_message stop commands from working answered here: https://stackoverflow.com/questions/49331096/why-does-on-message-stop-commands-from-working
+- How to change bot status: https://stackoverflow.com/questions/59126137/how-to-change-discord-py-bot-activity
