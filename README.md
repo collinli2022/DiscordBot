@@ -10,3 +10,6 @@ A personal discord bot that is intergrated with Raspberry Pi
 
 
 #### Explanation of files
+dablitfam.json - custom commands for friends
+helper.py - helps main file (makes code neater)
+run.py - main file (run this to start bot)
