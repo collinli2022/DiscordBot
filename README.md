@@ -7,6 +7,7 @@ A personal discord bot that is intergrated with Raspberry Pi
 #### RPI setup
 ##### Auto-Shutdown
 1. https://www.recantha.co.uk/blog/?p=13999
+	- check your status by using this command ```sudo systemctl status gpio-halt.service```
 
 
 #### Explanation of files
