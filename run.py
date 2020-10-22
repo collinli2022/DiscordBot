@@ -19,6 +19,10 @@ async def on_member_join(ctx, member):
     await ctx.send(f'{member} is now part of our cult')
 
 ## DEBUG FUNCTIONS
+@client.command()
+@commands.is_owner()
+async def shutdown(ctx):
+    await ctx.bot.logout()
 
 ## ALL COMMANDS
 @client.event # While an event, it actually does custom commands
@@ -48,7 +52,17 @@ async def on_message(message):
                 user = await helper.getUser(client, 767928423183417364)
                 await message.channel.send(message.author.mention + ':heart:' + user.mention)
         else: # custom commands end here
-        	await client.process_commands(message)
+            await client.process_commands(message)
+    else: # normal message (no command_prefix)
+         # anti bully
+        if 'collin' in message.content.lower():
+            reply, sentiment = helper.goodOrBad(message.content)
+            print()
+            print("ANTI BULLY - message: \""+message.content)
+            print(sentiment)
+            if(len(reply) > 0):
+                await message.channel.send(reply)
+
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
@@ -57,7 +71,7 @@ async def _help(self, ctx):
     await ctx.send_help()
 @client.command(aliases=['status'])
 async def changeStatus(ctx, arg1, arg2):
-	await helper.changeStatus(client, arg1, arg2)
+    await helper.changeStatus(client, arg1, arg2)
 
 token = helper.getToken()
 client.run(token) # Add token here

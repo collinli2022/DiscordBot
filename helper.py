@@ -3,6 +3,9 @@ from discord.ext import commands
 from discord.ext.commands import MemberConverter
 import random
 import json
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+#nltk.download('vader_lexicon') # one time only
 
 # DISCORD HELP
 def getUser(client, ID): # converts string ID to a user which can be messaged or pinged
@@ -68,3 +71,19 @@ def _8ball(question):
                'Very doubtful',
                'Simp harder']
      return 'Question: ' + question + '\nAnswer: ' + random.choice(responses)
+
+
+vader = SentimentIntensityAnalyzer()
+def goodOrBad(message):
+     scores = vader.polarity_scores(message)
+     good = ['Awww... Collin is flattered *blush*',
+             'Simp! Nah... :heart:',
+             'YESSSS!!!']
+     bad = ['PREASEE NO BULLY',
+            'Is that rly the truth tho :o',
+            'Rar, I\'m intimidating so if you dare bully me']
+     if scores['pos'] > 0.25: # people simping
+          return random.choice(good), scores
+     elif scores['neg'] > 0.25: # people bully
+          return random.choice(bad), scores
+     return "", scores
