@@ -27,16 +27,6 @@ async def shutdown(ctx):
     await ctx.send("**SHUTTING DOWN... Astalavista Babyy!!**")
     await ctx.bot.logout()
 
-@client.event
-async def on_message(msg):
-    if msg.content == ">say":
-        await msg.delete()
-@client.command()
-@commands.is_owner()
-async def say(ctx, arg1):
-    await ctx.send(arg1)
-    #await client.delete_messages(ctx.message) 
-
 ## ALL COMMANDS
 @client.event # While an event, it actually does custom commands
 async def on_message(message):
@@ -64,6 +54,13 @@ async def on_message(message):
                 #user = await client.fetch_user(767928423183417364)
                 user = await helper.getUser(client, 767928423183417364)
                 await message.channel.send(message.author.mention + ':heart:' + user.mention)
+        elif daMessage in ['testDelete']:
+            await message.delete()
+        elif daMessage in ['say'] and message.author.id == 401494858985897995:
+            await message.delete()
+            await message.channel.send(message.content[message.content.index(' '):])
+
+
         else: # custom commands end here
             await client.process_commands(message)
     else: # normal message (no command_prefix)
