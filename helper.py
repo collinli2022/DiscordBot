@@ -33,7 +33,7 @@ def getJson(location):
      return commands
      
 def getToken():
-     fname = 'token.txt' # txt location
+     fname = '/home/pi/Desktop/DiscordBot/token.txt' # txt location
      with open(fname, 'r') as f:
           for line in f:
                print('token is:', line)
@@ -76,7 +76,7 @@ def _8ball(question):
 vader = SentimentIntensityAnalyzer()
 def goodOrBad(message):
      scores = vader.polarity_scores(message)
-     good = ['Awww... Collin is flattered *blush*',
+     good = ['Awww... *flattered blush*',
              'Simp! Nah... :heart:',
              'YESSSS!!!']
      bad = ['PREASEE NO BULLY',

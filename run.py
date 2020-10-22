@@ -5,7 +5,9 @@ import random
 import json 
 import helper # self-written helper module
 
-cc = helper.getJson('dablitfam.json') # commands that can be easily changed from json
+
+# python3 /home/pi/Desktop/DiscordBot/run.py
+cc = helper.getJson('/home/pi/Desktop/DiscordBot/dablitfam.json') # commands that can be easily changed from json
 headers = helper.getHeaderAliases(cc)
 
 command_prefix = '>'

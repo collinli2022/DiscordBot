@@ -8,7 +8,11 @@ A personal discord bot that is intergrated with Raspberry Pi
 ##### Auto-Shutdown
 1. https://www.recantha.co.uk/blog/?p=13999
 	- check your status by using this command ```sudo systemctl status gpio-halt.service```
-
+##### Auto-Bot-Activate on startup
+1. terminal
+2. sudo crontab -e
+3. at bottom bottom type ```@reboot sudo python3 <script location> &```
+4. save
 
 #### Explanation of files
 dablitfam.json - custom commands for friends
