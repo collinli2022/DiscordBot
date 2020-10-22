@@ -2,7 +2,7 @@
 import time
  
 # Wait for 10 seconds
-time.sleep(5)
+time.sleep(10)
 
 import os
 

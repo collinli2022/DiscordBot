@@ -74,7 +74,7 @@ def _8ball(question):
 
 
 vader = SentimentIntensityAnalyzer()
-def goodOrBad(message):
+def bullyCollin(message):
      scores = vader.polarity_scores(message)
      good = ['Awww... *flattered blush*',
              'Simp! Nah... :heart:',

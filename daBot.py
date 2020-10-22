@@ -24,7 +24,18 @@ async def on_member_join(ctx, member):
 @client.command()
 @commands.is_owner()
 async def shutdown(ctx):
+    await ctx.send("**SHUTTING DOWN... Astalavista Babyy!!**")
     await ctx.bot.logout()
+
+@client.event
+async def on_message(msg):
+    if msg.content == ">say":
+        await msg.delete()
+@client.command()
+@commands.is_owner()
+async def say(ctx, arg1):
+    await ctx.send(arg1)
+    #await client.delete_messages(ctx.message) 
 
 ## ALL COMMANDS
 @client.event # While an event, it actually does custom commands
@@ -58,7 +69,7 @@ async def on_message(message):
     else: # normal message (no command_prefix)
          # anti bully
         if 'collin' in message.content.lower():
-            reply, sentiment = helper.goodOrBad(message.content)
+            reply, sentiment = helper.bullyCollin(message.content)
             print()
             print("ANTI BULLY - message: \""+message.content)
             print(sentiment)
