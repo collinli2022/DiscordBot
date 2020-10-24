@@ -82,7 +82,7 @@ def bullyCollin(message):
      bad = ['PREASEE NO BULLY',
             'Is that rly the truth tho :o',
             'Rar, I\'m intimidating so if you dare bully me']
-     if scores['pos'] > 0.25: # people simping
+     if scores['pos'] > 0.5: # people simping
           return random.choice(good), scores
      elif scores['neg'] > 0.25: # people bully
           return random.choice(bad), scores
