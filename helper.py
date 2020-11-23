@@ -5,7 +5,7 @@ import random
 import json
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-#nltk.download('vader_lexicon') # one time only
+nltk.download('vader_lexicon') # one time only
 
 # DISCORD HELP
 def getUser(client, ID): # converts string ID to a user which can be messaged or pinged
@@ -33,7 +33,7 @@ def getJson(location):
      return commands
      
 def getToken():
-     fname = '/home/pi/Desktop/DiscordBot/token.txt' # txt location
+     fname = 'token.txt' # txt location
      with open(fname, 'r') as f:
           for line in f:
                print('token is:', line)
